@@ -56,7 +56,7 @@
 								<label for="wb_swm_store_url"><?php esc_html_e('Store URL', 'wc-swm'); ?> </label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_store_url" id="wb_swm_store_url" type="text" style="" value="<?php echo esc_attr($wb_swm_store_url); ?>" class="" name="wb_swm_store_url" placeholder="">
+								<input name="wb_swm_store_url" id="wb_swm_store_url" type="text" style="" value="<?php echo esc_attr($wb_swm_store_url); ?>" class="" placeholder="">
 							</td>
 						</tr>
 						<tr valign="top">
@@ -64,7 +64,7 @@
 								<label for="wb_swm_api_key"><?php esc_html_e('API Key', 'wc-swm'); ?></label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_api_key" id="wb_swm_api_key" type="text" style="" value="<?php echo esc_attr($wb_swm_api_key); ?>" class="" name="wb_swm_api_key" placeholder="">
+								<input name="wb_swm_api_key" id="wb_swm_api_key" type="text" style="" value="<?php echo esc_attr($wb_swm_api_key); ?>" class="" placeholder="">
 							</td>
 						</tr>
 						<tr valign="top">
@@ -72,7 +72,7 @@
 								<label for="wb_swm_api_pwd"><?php esc_html_e('API Password', 'wc-swm'); ?> </label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_api_pwd" id="wb_swm_api_pwd" type="text" style="" value="<?php echo esc_attr($wb_swm_api_pwd); ?>" class="" name="wb_swm_api_pwd" placeholder="">
+								<input name="wb_swm_api_pwd" id="wb_swm_api_pwd" type="text" style="" value="<?php echo esc_attr($wb_swm_api_pwd); ?>" class="" placeholder="">
 							</td>
 						</tr>
 						<tr valign="top">
@@ -80,7 +80,7 @@
 								<label for="wb_swm_request_timeout"><?php esc_html_e('Request Timeout(s)', 'wc-swm'); ?> </label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_request_timeout" id="wb_swm_request_timeout" type="text" style="" value="<?php echo esc_attr($wb_swm_request_timeout); ?>" class="" name="wb_swm_request_timeout" placeholder="">
+								<input name="wb_swm_request_timeout" id="wb_swm_request_timeout" type="text" style="" value="<?php echo esc_attr($wb_swm_request_timeout); ?>" class="" placeholder="">
 							</td>
 						</tr>
 					</tbody>
