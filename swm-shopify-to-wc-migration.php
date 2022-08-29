@@ -59,8 +59,8 @@ class WB_Shopify_to_Woo_Migration
         define('SWM_DEFAULT_IMAGE_DOWNLOAD_STATUS', 'on');
         define('WB_SWM_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
         define('WB_SWM_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
-        define('WB_SWM_ASSETS_FOLDER_URL', WB_SWM_PLUGIN_DIR_URL . '/assets');
-        define('WB_SWM_INC_FOLDER_PATH', WB_SWM_PLUGIN_DIR_PATH . '/includes');
+        define('WB_SWM_ASSETS_FOLDER_URL', WB_SWM_PLUGIN_DIR_URL . 'assets');
+        define('WB_SWM_INC_FOLDER_PATH', WB_SWM_PLUGIN_DIR_PATH . 'includes');
         define('SWM_CACHE', $upload_dir);//use the same cache folder to free version
         define('WB_SWM_UPGRADE_TO_PRO', 'https://plugin-devs.com/product/shopify-to-woocommerce-migration/');
     }
