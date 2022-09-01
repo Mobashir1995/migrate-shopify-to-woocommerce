@@ -6,7 +6,13 @@ body {
     line-height: 1.4em;
     min-width: 600px;
 }
-
+.swm-depreacated-message{
+  margin-top: 5px !important;
+  padding: 5px 15px !important;
+}
+.swm-depreacated-message p{
+  font-size: 12px;
+}
 table.wc_status_table td mark.yes, table.wc_status_table th mark.yes {
     color: #7ad03a;
     background: transparent;
@@ -69,6 +75,21 @@ table.wc_status_table td mark.yes, table.wc_status_table th mark.yes {
   line-height: 36px !important;
   font-weight: 700;
 }
+.swm .swm-disable-input{
+  background: #d8d8d8 !important;
+  color: #6c6c6c !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+swm-tooltip{
+  
+}
+.swm-warning-tooltip{
+  /* color:  */
+}
+
 @media only screen and (max-width: 767px){
   .swm-navigation-bar .item{
     width: 90px;

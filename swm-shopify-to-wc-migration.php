@@ -53,6 +53,7 @@ class WB_Shopify_to_Woo_Migration
         $upload_dir = trailingslashit($upload_dir['basedir']);
 
         define('WB_SWM_VERSION', '0.9.3');
+        define('SWM_API_VERSION', '2022-07/');
         define('SWM_DEFAULT_REQUEST_TIMEOUT', '600');
         define('SWM_DEFAULT_RESULT_PER_REQUEST', '5');
         define('SWM_DEFAULT_CAT_PER_REQUEST', '10');

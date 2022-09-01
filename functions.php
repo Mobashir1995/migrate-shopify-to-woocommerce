@@ -33,8 +33,13 @@ function swm_set_store_url_query()
     $store_url = swm_get_option('wb_swm_store_url');
     $api_key = swm_get_option('wb_swm_api_key');
     $api_password = swm_get_option('wb_swm_api_pwd');
-
-    return 'https://'.$api_key.':'.$api_password.'@'.$store_url.'/admin/';
+	$access_token = get_option('wb_swm_access_token');
+	if( !empty($access_token) ){
+		$url = 'https://'.$store_url.'/admin/api/'.SWM_API_VERSION;
+	}elseif( !empty($api_key) && !empty($api_password) ){
+		$url = 'https://'.$api_key.':'.$api_password.'@'.$store_url.'/admin/api/'.SWM_API_VERSION;
+	}
+	return $url;
 }
 
 function swm_remote_request($url, $args = array(), $method = 'GET')
@@ -43,12 +48,17 @@ function swm_remote_request($url, $args = array(), $method = 'GET')
     $request_timeout = swm_get_option('wb_swm_request_timeout') ? swm_get_option('wb_swm_request_timeout') : SWM_DEFAULT_REQUEST_TIMEOUT;
     $api_key = swm_get_option('wb_swm_api_key');
     $api_password = swm_get_option('wb_swm_api_pwd');
+	$access_token = get_option('wb_swm_access_token');
 
     $args['method'] = $method;
     $args['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36';
     $args['timeout'] = $request_timeout;
-    $args['headers']['Authorization'] = 'Basic ' . base64_encode($api_key . ':' . $api_password);
-
+	if (!empty($access_token)) {
+		$args['headers']['X-Shopify-Access-Token'] = $access_token;
+	}elseif( !empty($api_key) && !empty($api_password) ){
+		$args['headers']['Authorization'] = 'Basic ' . base64_encode($api_key . ':' . $api_password);
+	}
+    
     $wp_args = apply_filters('swm_remote_request_args', $args);
 
     $request = wp_remote_request($url, $wp_args);

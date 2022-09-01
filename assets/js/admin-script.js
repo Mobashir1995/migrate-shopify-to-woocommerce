@@ -78,21 +78,12 @@ jQuery(document).ready(function(){
 	          }
 	        ]
 	      },
-	      api_key: {
-	        identifier: 'wb_swm_api_key',
+		  access_token: {
+	        identifier: 'wb_swm_access_token',
 	        rules: [
 	          {
 	            type   : 'empty',
-	            prompt : '<strong>API Key</strong> Should not be Empty'
-	          }
-	        ]
-	      },
-	      api_pwd: {
-	        identifier: 'wb_swm_api_pwd',
-	        rules: [
-	          {
-	            type   : 'empty',
-	            prompt : '<strong>API Password</strong> Should not be Empty'
+	            prompt : '<strong>Access Token</strong> Should not be Empty'
 	          }
 	        ]
 	      },
@@ -145,8 +136,7 @@ jQuery(document).ready(function(){
 	    },
 
 	});
-	  
-	  
+		  
 	jQuery('#wb_swm_request_timeout').on('focusout', function(){
 		var default_value = swm_ajax_object.wb_swm_request_timeout ? swm_ajax_object.wb_swm_request_timeout : 600;
 		set_default_int_value_on_form_validate(default_value, jQuery(this) );

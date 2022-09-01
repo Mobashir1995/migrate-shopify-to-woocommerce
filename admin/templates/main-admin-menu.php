@@ -3,6 +3,8 @@
     $wb_swm_store_url = get_option('wb_swm_store_url') ? get_option('wb_swm_store_url') : '';
     $wb_swm_api_key = get_option('wb_swm_api_key') ? get_option('wb_swm_api_key') : '';
     $wb_swm_api_pwd = get_option('wb_swm_api_pwd') ? get_option('wb_swm_api_pwd') : '';
+	$wb_swm_access_token = get_option('wb_swm_access_token') ? get_option('wb_swm_access_token') : '';
+	
 
     //Product Options
     $wb_swm_product_status = get_option('wb_swm_product_status') ? get_option('wb_swm_product_status') : 'publish';
@@ -61,18 +63,32 @@
 						</tr>
 						<tr valign="top">
 							<td scope="row" class="three wide titledesc">
-								<label for="wb_swm_api_key"><?php esc_html_e('API Key', 'wc-swm'); ?></label>
+								<label for="wb_swm_access_token"><?php esc_html_e('Access Token', 'wc-swm'); ?></label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_api_key" id="wb_swm_api_key" type="text" style="" value="<?php echo esc_attr($wb_swm_api_key); ?>" class="" placeholder="">
+								<input name="wb_swm_access_token" id="wb_swm_access_token" type="text" style="" value="<?php echo esc_attr($wb_swm_access_token); ?>" placeholder="">
 							</td>
 						</tr>
 						<tr valign="top">
 							<td scope="row" class="three wide titledesc">
-								<label for="wb_swm_api_pwd"><?php esc_html_e('API Password', 'wc-swm'); ?> </label>
+								<label for="wb_swm_api_key"><?php esc_html_e('API Key', 'wc-swm'); ?></label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_api_pwd" id="wb_swm_api_pwd" type="text" style="" value="<?php echo esc_attr($wb_swm_api_pwd); ?>" class="" placeholder="">
+								<input name="wb_swm_api_key" id="wb_swm_api_key" type="text" style="" value="<?php echo esc_attr($wb_swm_api_key); ?>" class="swm-disable-input" placeholder="">
+								<div class="ui negative message swm-depreacated-message">
+									<p>Using private app is depreacated on Shopify. So, this field is no longer be used. It will be removed on future version. Please use the Access Token field instead.</p>
+								</div>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td scope="row" class="three wide titledesc">
+								<label for="wb_swm_api_pwd"><?php esc_html_e('API Secret (Password)', 'wc-swm'); ?> </label>
+							</td>
+							<td class="forminp forminp-text field">
+								<input name="wb_swm_api_pwd" id="wb_swm_api_pwd" type="text" style="" value="<?php echo esc_attr($wb_swm_api_pwd); ?>" class="swm-disable-input" placeholder="">
+								<div class="ui negative message swm-depreacated-message">
+									<p>Using private app is depreacated on Shopify. So, this field is no longer be used. It will be removed on future version. Please use the Access Token field instead.</p>
+								</div>
 							</td>
 						</tr>
 						<tr valign="top">
