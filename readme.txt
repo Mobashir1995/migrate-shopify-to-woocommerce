@@ -28,6 +28,7 @@ There is also a pro version of this plugin. You will get more features and advan
 > <strong>[Upgrade to Pro!](https://plugin-devs.com/product/shopify-to-woocommerce-migration/)</strong>
 
 * <strong>All Free Features</strong>
+* <strong>IMPORT by CATEGORY:</strong> You can import products from specified Shopify Collection ID.
 * <strong>ORDERS:</strong> Payment method, shipping method, first name, last name, company, country, address, zip, city, province, phone, total, subtotal, tax, discount, shipping cost, currency, date create, browser IP, customer user agent, line items, discount code, order number, order fulfillment etc.
 * Update existing Orders
 * <strong>CUSTOMERS:</strong> Import customers per ajax request, first name, last name, phone, company, address, city, province, zip, country etc.
@@ -50,17 +51,24 @@ This section describes how to install the plugin and get it working.
 
 == Screenshots ==
 
-1. General Settings
-2. Product Settings
-3. Category Settings
-4. Customer Settings
-5. Order Settings
-6. Importing Product
-7. Importing Categories
-8. Importing Customers
-9. Importing Orders
+1. Getting Access Token from Shopify
+2. Allow required permission
+3. General Settings
+4. Product Settings
+5. Category Settings
+6. Customer Settings
+7. Order Settings
+8. Importing Product
+9. Importing Categories
+10. Importing Customers
+11. Importing Orders
 
 == Changelog ==
+
+= 1.0.0 (09-01-21) =
+# Make Compatible with Latest Shopify API 2022-07
+# Add Access Token field in favor of API Key, API Secret
+# Depreacated previous API Key, API Secret fields
 
 = 0.9.3 (08-18-20) =
 # Make Compatible with WordPress 5.5
