@@ -58,7 +58,8 @@ if( !class_exists('Swm_Admin_Pages') ){
 
 		public function swm_register_setting() {
 		    register_setting( 'swm_settings_options', 'wb_swm_store_url' );
-		    register_setting( 'swm_settings_options', 'wb_swm_api_key');
+		    register_setting( 'swm_settings_options', 'wb_swm_access_token');
+			register_setting( 'swm_settings_options', 'wb_swm_api_key');
 		    register_setting( 'swm_settings_options', 'wb_swm_api_pwd');
 		    register_setting( 'swm_settings_options', 'wb_swm_product_status');
 		    register_setting( 'swm_settings_options', 'wb_swm_download_images');

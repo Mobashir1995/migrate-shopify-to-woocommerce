@@ -1,27 +1,29 @@
 <?php
-	//General Options
-	$wb_swm_store_url = get_option('wb_swm_store_url') ? get_option('wb_swm_store_url') : '';
-	$wb_swm_api_key = get_option('wb_swm_api_key') ? get_option('wb_swm_api_key') : '';
-	$wb_swm_api_pwd = get_option('wb_swm_api_pwd') ? get_option('wb_swm_api_pwd') : '';
+    //General Options
+    $wb_swm_store_url = get_option('wb_swm_store_url') ? get_option('wb_swm_store_url') : '';
+    $wb_swm_api_key = get_option('wb_swm_api_key') ? get_option('wb_swm_api_key') : '';
+    $wb_swm_api_pwd = get_option('wb_swm_api_pwd') ? get_option('wb_swm_api_pwd') : '';
+	$wb_swm_access_token = get_option('wb_swm_access_token') ? get_option('wb_swm_access_token') : '';
 	
-	//Product Options
-	$wb_swm_product_status = get_option('wb_swm_product_status') ? get_option('wb_swm_product_status') : 'publish';
-	$wb_swm_download_images = get_option('wb_swm_download_images') ? get_option('wb_swm_download_images') : 'off';
-	$wb_swm_product_categories = get_option('wb_swm_product_categories') ? get_option('wb_swm_product_categories') : array();
-	$wb_swm_product_tags = get_option('wb_swm_product_tags') ? get_option('wb_swm_product_tags') : array();
-	$wb_swm_request_timeout = get_option('wb_swm_request_timeout') ? get_option('wb_swm_request_timeout') : SWM_DEFAULT_REQUEST_TIMEOUT;
-	$wb_swm_result_per_request = get_option('wb_swm_result_per_request') ? get_option('wb_swm_result_per_request') : SWM_DEFAULT_RESULT_PER_REQUEST;
-	
-	//Category Options
-	$wb_swm_download_cat_images = get_option('wb_swm_download_cat_images') ? get_option('wb_swm_download_cat_images') : 'off';
-	$wb_swm_cats_per_request = get_option('wb_swm_cats_per_request') ? get_option('wb_swm_cats_per_request') : SWM_DEFAULT_CAT_PER_REQUEST;
 
-	//Customer Options
-	$wb_swm_customer_per_request = '';
+    //Product Options
+    $wb_swm_product_status = get_option('wb_swm_product_status') ? get_option('wb_swm_product_status') : 'publish';
+    $wb_swm_download_images = get_option('wb_swm_download_images') ? get_option('wb_swm_download_images') : 'off';
+    $wb_swm_product_categories = get_option('wb_swm_product_categories') ? get_option('wb_swm_product_categories') : array();
+    $wb_swm_product_tags = get_option('wb_swm_product_tags') ? get_option('wb_swm_product_tags') : array();
+    $wb_swm_request_timeout = get_option('wb_swm_request_timeout') ? get_option('wb_swm_request_timeout') : SWM_DEFAULT_REQUEST_TIMEOUT;
+    $wb_swm_result_per_request = get_option('wb_swm_result_per_request') ? get_option('wb_swm_result_per_request') : SWM_DEFAULT_RESULT_PER_REQUEST;
 
-	//Orders Options
-	$wb_swm_order_per_request = '';
-?>
+    //Category Options
+    $wb_swm_download_cat_images = get_option('wb_swm_download_cat_images') ? get_option('wb_swm_download_cat_images') : 'off';
+    $wb_swm_cats_per_request = get_option('wb_swm_cats_per_request') ? get_option('wb_swm_cats_per_request') : SWM_DEFAULT_CAT_PER_REQUEST;
+
+    //Customer Options
+    $wb_swm_customer_per_request = '';
+
+    //Orders Options
+    $wb_swm_order_per_request = '';
+    ?>
 <div class="wrap woocommerce swm ">
 	<div class="ui inverted menu swm-navigation-bar">
 	  <a href="#general-settings" class="green item active">General Settings</a>
@@ -32,11 +34,13 @@
 	  <a href="#swm-resourse-selection" class="blue item swm-import-btn">Import</a>
 	</div>
 	<form action="options.php" class="ui form" method="post" id="swm-mainform">
-		<?php settings_fields( 'swm_settings_options' ); ?>
+		<?php settings_fields('swm_settings_options'); ?>
 
 		<!-- <div class="ui fluid container segment"> -->
 			<!-- <div class="ui styled fluid accordion"> -->
-			<div class="ui error message" <?php if( !swm_check_api_key() ){ echo 'style="display: block;"'; } ?>>
+			<div class="ui error message" <?php if (!swm_check_api_key()) {
+			    echo 'style="display: block;"';
+			} ?>>
 				<p>You have need to enter Valid Domain, API key and API secret to Migrate from Shopify</p>
 			</div>
 			<div class="ui error message"></div>
@@ -54,7 +58,15 @@
 								<label for="wb_swm_store_url"><?php esc_html_e('Store URL', 'wc-swm'); ?> </label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_store_url" id="wb_swm_store_url" type="text" style="" value="<?php echo esc_attr($wb_swm_store_url); ?>" class="" name="wb_swm_store_url" placeholder="">
+								<input name="wb_swm_store_url" id="wb_swm_store_url" type="text" style="" value="<?php echo esc_attr($wb_swm_store_url); ?>" class="" placeholder="">
+							</td>
+						</tr>
+						<tr valign="top">
+							<td scope="row" class="three wide titledesc">
+								<label for="wb_swm_access_token"><?php esc_html_e('Access Token', 'wc-swm'); ?></label>
+							</td>
+							<td class="forminp forminp-text field">
+								<input name="wb_swm_access_token" id="wb_swm_access_token" type="text" style="" value="<?php echo esc_attr($wb_swm_access_token); ?>" placeholder="">
 							</td>
 						</tr>
 						<tr valign="top">
@@ -62,15 +74,21 @@
 								<label for="wb_swm_api_key"><?php esc_html_e('API Key', 'wc-swm'); ?></label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_api_key" id="wb_swm_api_key" type="text" style="" value="<?php echo esc_attr($wb_swm_api_key); ?>" class="" name="wb_swm_api_key" placeholder="">
+								<input name="wb_swm_api_key" id="wb_swm_api_key" type="text" style="" value="<?php echo esc_attr($wb_swm_api_key); ?>" class="swm-disable-input" placeholder="">
+								<div class="ui negative message swm-depreacated-message">
+									<p>Using private app is depreacated on Shopify. So, this field is no longer be used. It will be removed on future version. Please use the Access Token field instead.</p>
+								</div>
 							</td>
 						</tr>
 						<tr valign="top">
 							<td scope="row" class="three wide titledesc">
-								<label for="wb_swm_api_pwd"><?php esc_html_e('API Password', 'wc-swm'); ?> </label>
+								<label for="wb_swm_api_pwd"><?php esc_html_e('API Secret (Password)', 'wc-swm'); ?> </label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_api_pwd" id="wb_swm_api_pwd" type="text" style="" value="<?php echo esc_attr($wb_swm_api_pwd); ?>" class="" name="wb_swm_api_pwd" placeholder="">
+								<input name="wb_swm_api_pwd" id="wb_swm_api_pwd" type="text" style="" value="<?php echo esc_attr($wb_swm_api_pwd); ?>" class="swm-disable-input" placeholder="">
+								<div class="ui negative message swm-depreacated-message">
+									<p>Using private app is depreacated on Shopify. So, this field is no longer be used. It will be removed on future version. Please use the Access Token field instead.</p>
+								</div>
 							</td>
 						</tr>
 						<tr valign="top">
@@ -78,7 +96,7 @@
 								<label for="wb_swm_request_timeout"><?php esc_html_e('Request Timeout(s)', 'wc-swm'); ?> </label>
 							</td>
 							<td class="forminp forminp-text field">
-								<input name="wb_swm_request_timeout" id="wb_swm_request_timeout" type="text" style="" value="<?php echo esc_attr($wb_swm_request_timeout); ?>" class="" name="wb_swm_request_timeout" placeholder="">
+								<input name="wb_swm_request_timeout" id="wb_swm_request_timeout" type="text" style="" value="<?php echo esc_attr($wb_swm_request_timeout); ?>" class="" placeholder="">
 							</td>
 						</tr>
 					</tbody>
@@ -124,18 +142,20 @@
 							<td class="forminp forminp-text field">
 								<select multiple="" class="ui search dropdown" name="wb_swm_product_categories[]" id="wb_swm_product_categories">
 									<?php
-										$product_cat_args = array(
-										          'taxonomy'  => 'product_cat',
-										          'hide_empty'=> false
-										        );
-										$product_cat_terms = get_terms($product_cat_args);
-										if( !empty($product_cat_terms) ){
-											foreach ($product_cat_terms as $key => $value) {
-									?>
-												<option <?php if( in_array( $value->term_id, $wb_swm_product_categories ) ){ echo 'selected="selected"'; }; ?> value="<?php echo $value->term_id; ?>"><?php echo $value->name; ?></option>
+			                                        $product_cat_args = array(
+			                                                  'taxonomy'  => 'product_cat',
+			                                                  'hide_empty'=> false
+			                                                );
+    $product_cat_terms = get_terms($product_cat_args);
+    if (!empty($product_cat_terms)) {
+        foreach ($product_cat_terms as $key => $value) {
+            ?>
+												<option <?php if (in_array($value->term_id, $wb_swm_product_categories)) {
+												    echo 'selected="selected"';
+												}; ?> value="<?php echo $value->term_id; ?>"><?php echo $value->name; ?></option>
 									<?php
-											}
-										}else{ ?>
+        }
+    } else { ?>
 										<option value=""><?php esc_html_e('No Product Categories Found', 'wc-swm'); ?></option>
 									<?php } ?>
 								</select>
@@ -148,18 +168,20 @@
 							<td class="forminp forminp-text field">
 								<select multiple="" class="ui search dropdown" name="wb_swm_product_tags[]" id="wb_swm_product_tags">
 									<?php
-										$product_tag_args = array(
-										          'taxonomy'  => 'product_tag',
-										          'hide_empty'=> false
-										        );
-										$product_tag_terms = get_terms($product_tag_args);
-										if( !empty($product_tag_terms) ){
-											foreach ($product_tag_terms as $key => $value) {
-									?>
-												<option <?php if( in_array( $value->name, $wb_swm_product_tags ) ){ echo 'selected="selected"'; }; ?> value="<?php echo esc_attr($value->name); ?>"><?php echo $value->name; ?></option>
+    $product_tag_args = array(
+              'taxonomy'  => 'product_tag',
+              'hide_empty'=> false
+            );
+    $product_tag_terms = get_terms($product_tag_args);
+    if (!empty($product_tag_terms)) {
+        foreach ($product_tag_terms as $key => $value) {
+            ?>
+												<option <?php if (in_array($value->name, $wb_swm_product_tags)) {
+												    echo 'selected="selected"';
+												}; ?> value="<?php echo esc_attr($value->name); ?>"><?php echo $value->name; ?></option>
 									<?php
-											}
-										}else{ ?>
+        }
+    } else { ?>
 											<option value=""><?php esc_html_e('No Product Tags Found', 'wc-swm'); ?></option>
 										<?php } ?>
 								</select>
@@ -270,7 +292,7 @@
 
 		<!-- <div id="swm-resourse-selection" class="ui fluid container segment"> -->
 		<div id="swm-resourse-selection" class="ui fluid segment hidden">
-		<?php if( !$wb_swm_store_url || !$wb_swm_api_key || !$wb_swm_api_pwd ) { ?>
+		<?php if (!$wb_swm_store_url || !$wb_swm_api_key || !$wb_swm_api_pwd) { ?>
 			<div class="ui red message">
 			  <div class="header">
 			    You have need to fill up the following fields before starting The Importing Process. Please fill up the following Informations.
@@ -282,7 +304,7 @@
 			</div>
 		<?php } ?>
 		
-		<?php if( $wb_swm_store_url && $wb_swm_api_key && $wb_swm_api_pwd ) { ?>
+		<?php if ($wb_swm_store_url && $wb_swm_api_key && $wb_swm_api_pwd) { ?>
 			<table class="ui padded table celled">
 				<thead>
 					<tr>
@@ -365,11 +387,11 @@
 			</table>
 		<?php } ?>
 
-			<?php if( $wb_swm_store_url && $wb_swm_api_key && $wb_swm_api_pwd && swm_check_api_key() ) { ?>
+			<?php if ($wb_swm_store_url && $wb_swm_api_key && $wb_swm_api_pwd && swm_check_api_key()) { ?>
 				<a class="swm-start-importer-btn button button-primary" href="javascript:void(0)">Start Import</a>
 				<a class="swm-delete-history-btn negative ui button" href="admin.php?page=swm_shopify_to_wc&swm_delete_import_history=true">Delete Previous Import History</a>
 				
-			<?php }else{ ?>
+			<?php } else { ?>
 				<div class="ui error message" style="display: block;" >
 					<p>You have need to enter Valid Domain, API key and API secret to Migrate from Shopify</p>
 				</div>
