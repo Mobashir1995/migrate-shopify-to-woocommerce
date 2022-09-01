@@ -9,8 +9,8 @@
  * Text Domain: wc-swm
  * Domain Path: /languages
  * Copyright 2019 plugin-devs.com. All rights reserved.
- * Tested up to: 5.3
- * WC tested up to: 3.8
+ * Tested up to: 6.0.2
+ * WC tested up to: 6.8.2
  **/
 
 if (! defined('ABSPATH')) {
