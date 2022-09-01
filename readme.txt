@@ -65,7 +65,7 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= 1.0.0 (09-01-21) =
+= 1.0.0 (09-01-22) =
 # Make Compatible with Latest Shopify API 2022-07
 # Add Access Token field in favor of API Key, API Secret
 # Depreacated previous API Key, API Secret fields
