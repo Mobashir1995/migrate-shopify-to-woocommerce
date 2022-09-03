@@ -33,13 +33,13 @@ function swm_set_store_url_query()
     $store_url = swm_get_option('wb_swm_store_url');
     $api_key = swm_get_option('wb_swm_api_key');
     $api_password = swm_get_option('wb_swm_api_pwd');
-	$access_token = get_option('wb_swm_access_token');
-	if( !empty($access_token) ){
-		$url = 'https://'.$store_url.'/admin/api/'.SWM_API_VERSION;
-	}elseif( !empty($api_key) && !empty($api_password) ){
-		$url = 'https://'.$api_key.':'.$api_password.'@'.$store_url.'/admin/api/'.SWM_API_VERSION;
-	}
-	return $url;
+    $access_token = get_option('wb_swm_access_token');
+    if (!empty($access_token)) {
+        $url = 'https://'.$store_url.'/admin/api/'.SWM_API_VERSION;
+    } elseif (!empty($api_key) && !empty($api_password)) {
+        $url = 'https://'.$api_key.':'.$api_password.'@'.$store_url.'/admin/api/'.SWM_API_VERSION;
+    }
+    return $url;
 }
 
 function swm_remote_request($url, $args = array(), $method = 'GET')
@@ -48,25 +48,20 @@ function swm_remote_request($url, $args = array(), $method = 'GET')
     $request_timeout = swm_get_option('wb_swm_request_timeout') ? swm_get_option('wb_swm_request_timeout') : SWM_DEFAULT_REQUEST_TIMEOUT;
     $api_key = swm_get_option('wb_swm_api_key');
     $api_password = swm_get_option('wb_swm_api_pwd');
-	$access_token = get_option('wb_swm_access_token');
-
+    $access_token = get_option('wb_swm_access_token');
     $args['method'] = $method;
     $args['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36';
     $args['timeout'] = $request_timeout;
-	if (!empty($access_token)) {
-		$args['headers']['X-Shopify-Access-Token'] = $access_token;
-	}elseif( !empty($api_key) && !empty($api_password) ){
-		$args['headers']['Authorization'] = 'Basic ' . base64_encode($api_key . ':' . $api_password);
-	}
-    
+    if (!empty($access_token)) {
+        $args['headers']['X-Shopify-Access-Token'] = $access_token;
+    } elseif (!empty($api_key) && !empty($api_password)) {
+        $args['headers']['Authorization'] = 'Basic ' . base64_encode($api_key . ':' . $api_password);
+    }
     $wp_args = apply_filters('swm_remote_request_args', $args);
-
     $request = wp_remote_request($url, $wp_args);
-
     if (!is_wp_error($request) && ($request['response']['code'] == 200)) {
         $api_call_limit = wp_remote_retrieve_header($request, 'X-Shopify-Shop-Api-Call-Limit');
         $total_api_call = substr($api_call_limit.'/', 0, strpos($api_call_limit, '/'));
-
         if ($total_api_call == 39) {
             sleep(10);
         }
@@ -111,7 +106,7 @@ function swm_upload_image($url, $desc='gallery desc')
 
     //use media_handle_sideload to upload img:
     $thumbid = media_handle_sideload($file_array, '', $desc);
-    //			print_r($thumbid);
+
     // If error storing permanently, unlink
     if (is_wp_error($thumbid)) {
         @unlink($file_array['tmp_name']);
