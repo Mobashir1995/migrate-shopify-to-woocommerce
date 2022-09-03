@@ -59,10 +59,19 @@ function swm_remote_request($url, $args = array(), $method = 'GET')
     }
     $wp_args = apply_filters('swm_remote_request_args', $args);
     $request = wp_remote_request($url, $wp_args);
+
+    //Fix API Rate limiting if already exceed
+    if (!is_wp_error($request) && ($request['response']['code'] == 429)) {
+        $api_retry_after = wp_remote_retrieve_header($request, 'retry-after');
+        sleep(intval($api_retry_after));
+        swm_remote_request($url, $args, $method);
+    }
     if (!is_wp_error($request) && ($request['response']['code'] == 200)) {
         $api_call_limit = wp_remote_retrieve_header($request, 'X-Shopify-Shop-Api-Call-Limit');
         $total_api_call = substr($api_call_limit.'/', 0, strpos($api_call_limit, '/'));
-        if ($total_api_call == 39) {
+        
+        //reduce API call rate limit if it is about to exceed
+        if ($total_api_call >= 38) {
             sleep(10);
         }
         $api_response = array();
