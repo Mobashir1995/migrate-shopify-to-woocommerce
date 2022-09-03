@@ -92,7 +92,7 @@ class SWM_Shopify_Product
         $url = swm_set_store_url_query() . 'products.json';
         $url = add_query_arg(array(
                     'collection_id' => $collection_id,
-                    'limit' => 2,
+                    'limit' => 250,
                     'fields' => 'id',
                 ), $url);
         if (isset($page_info) && !empty($page_info)) {
